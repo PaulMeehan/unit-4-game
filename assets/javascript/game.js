@@ -17,13 +17,30 @@ var game = {
     currentGoal: 0,    //current randomized goal
     addends: [],        //array of randomized addends for each crystal
     currentScore: 0,   //players current score
-    
+    mode: "between games",  //flag indicating the current game mode
+
     checkScore: function () {
         if (this.currentScore === this.currentGoal) {
-            alert("Win!");
+            $("#results").text("You Win!!");
+            this.numWins = this.numWins + 1;
+            $("#wins").text(this.numWins);
+            this.mode = "between games";
+            $("#newRound").show();
         } else if (this.currentScore > this.currentGoal) {
-            alert("lose");
+            $("#results").text("Sorry, You lose!");
+            this.numLosses = this.numLosses + 1;
+            $("#losses").text(this.numLosses);
+            this.mode = "between games";
+            $("#newRound").show();
         };
+    },
+
+    processClick: function (crystalNum) {
+        if (this.mode === "in play") {    //Only process crystal clicks when game in play
+            game.currentScore = game.currentScore + parseInt(game.addends[crystalNum]);
+            $("#score").text(game.currentScore);
+            game.checkScore();
+        }
     }
 };
 
@@ -57,38 +74,27 @@ $(document).ready(function () {
         game.currentScore = 0;
         $("#score").text(game.currentScore);
 
-        $("#results").text("Game on!");
+        game.mode = "in play";
+
+        $("#results").text("Game on!").css("font-size","30px");
+
+        $("#newRound").hide();
     });
 
 
     $("#crystal0").click(function() {
-        console.log("zero")
-        game.currentScore = game.currentScore + parseInt(game.addends[0]);
-        $("#score").text(game.currentScore);
-        game.checkScore();
+        game.processClick(0);
     });
 
     $("#crystal1").click(function () {
-        console.log("one")
-        game.currentScore = game.currentScore + parseInt(game.addends[1]);
-        $("#score").text(game.currentScore);
-        game.checkScore();
-
+        game.processClick(1);
     });
 
     $("#crystal2").click(function () {
-        console.log("two")
-        game.currentScore = game.currentScore + parseInt(game.addends[2]);
-        $("#score").text(game.currentScore);
-        game.checkScore();
-
+        game.processClick(2);
     });
 
     $("#crystal3").click(function () {
-        console.log("three")
-        game.currentScore = game.currentScore + parseInt(game.addends[3]);
-        $("#score").text(game.currentScore);
-        game.checkScore();
-
+        game.processClick(3);
     });
 });

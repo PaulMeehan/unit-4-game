@@ -1,9 +1,50 @@
+body {
+    background-image: url("../images/light-grey-terrazzo.png");
+}
 
-div {
-    border: 1px solid red;   
+p {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+span, div {
+    font-weight: bold;
+    font-size: 19px;
 }
 
 .crystal-images {
     height: 150px;
     width: 125px;
+}
+
+#main-title {
+    background-color: lightseagreen;
+    color: white;
+    margin: 10px auto;
+}
+
+#instructions {
+    background-color: cadetblue;
+}
+
+#goal, #score {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#results {
+    color: red;
+    font-size: 19px;
+}
+
+#newRound {
+    margin-top: 40px;
+    color: red;
+    font-weight: bold;
+}
+
+#crystal-row {
+    border: 1px solid lightcoral;
+    margin-top: 15px;
 }
