@@ -11,6 +11,7 @@ function pickRandomNumber(minVal, maxVal) {
     return newRandomNum;
 };
 
+// Game object
 var game = {
     numWins: 0,        //total number of wins
     numLosses: 0,      //total number of losses
@@ -19,6 +20,7 @@ var game = {
     currentScore: 0,   //players current score
     mode: "between games",  //flag indicating the current game mode
 
+    // function to check and process win or lose
     checkScore: function () {
         if (this.currentScore === this.currentGoal) {
             $("#results").text("You Win!!");
@@ -35,6 +37,7 @@ var game = {
         };
     },
 
+    // function to update score and check results
     processClick: function (crystalNum) {
         if (this.mode === "in play") {    //Only process crystal clicks when game in play
             game.currentScore = game.currentScore + parseInt(game.addends[crystalNum]);
