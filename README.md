@@ -16,3 +16,4 @@ Continue to click on the crystals adding points to your total until your total s
 
 Click on the &quot;Start a New Round&quot; button again to begin again.  The screen also displays your total number of wins and losses.
 
+Good luck!!
